@@ -1,0 +1,106 @@
+html {
+    scroll-behavior: smooth;
+}
+.body {
+    position: static;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.table_2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+.rebox {
+    height: 1000px;
+}
+.rebox2 {
+    float: left;
+    width: 300px;
+    height: 930px;
+    background:  url(../img/narara.jpg);
+    background-size: contain;
+}
+.rebox4 {
+    list-style: none;
+
+}
+.rebox4 li {
+    margin-top: 90px;
+    text-align: center;
+    padding: 14px;
+}
+.rebox4 li a {
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 800;
+    font-family: 'Noto Sans Korean', 'Nanum Gothic',
+     sans-serif;
+    color: white;
+
+}
+
+.goupbtn {
+    top: 93%;
+    left: 97%;
+    width: 50px;
+    height: 50px;
+    border-radius: 80%;
+    border: none;
+    position: fixed;
+    z-index: 2;
+    background-color: aqua;
+  }
+ul, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+.y0 {
+    padding-top: 100px;
+    width: 1000px;
+}
+.y1 {
+    text-align: center;
+    padding-top: 100px;
+    width: 1500px;
+    height: auto;
+    margin-left: 200px;
+    margin-bottom: 500px;
+}
+.y3_0 {
+    margin-top: 10px;
+}
+.y3 {
+    width: 1500px;
+}
+.y4 {    
+	display: flex;
+    text-align: center;
+    margin-top: 40px;
+    margin-left:400px;
+}
+.y4 li {
+    width: 350px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #aaaaaa;
+    font-weight: bold;
+    border-left: 1px solid white;
+    font-size: 20px;
+}
+.y5 {
+	width: 700px;
+    margin-top: 20px;
+    height: 100px;
+    line-height: 100px;
+    font-weight: bold;
+    background-color: #7a899c;
+    font-size: 20px;
+    margin-left:400px;
+}
+
+.hitbl {
+	margin-top:300px;
+}

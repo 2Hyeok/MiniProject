@@ -1,0 +1,125 @@
+
+.gongzi {
+    margin-bottom: 20px;
+}
+.board { 
+    /*플렉스로 잡고 중앙정렬 시킴*/
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    margin-left: 350px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table_3 {
+    border-top :2px solid #2c59b4;
+    width: 100%;
+    
+}
+.tr_size {
+    height: 48px;
+    border-bottom: solid 1px gainsboro;
+}
+.table_lr {
+    margin-top: 35px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.glejacksung2 {
+    float: right;
+    display: inline;
+    padding: 10px 15px;
+    background-color: seagreen;
+    color: white;
+}
+.form_box {
+    margin: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 1100px;
+
+}
+.input_field {
+    border: 1px solid #2c59b4;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 3px 0;
+    font-size: 14px;
+    width: 100%;
+}
+.textarea_field {
+    border: 1px solid #2c59b4;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 3px 0;
+    font-size: 14px;
+    width: 100%;
+    height: 500px;
+}
+.write_button {
+    background-color: #475d9f;
+    border: 1px solid #323f6b;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 18px;
+    
+}
+.bogi_button_form {
+    margin-top: 10px;
+}
+.write_bogi_button  {
+    background-color: #475d9f;
+    border: 1px solid #323f6b;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 18px;
+}
+.write_bogi_button2  {
+    background-color: #475d9f;
+    border: 1px solid #323f6b;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 18px;
+}
+.content_section {
+    margin-left: 400px;
+    height: 800px;
+}
+.gesi_button {
+    float: right;
+}
+.form_box a {
+    color: white;
+}
+.boardbody {
+   display:flex;
+   justify-content:flex-start;
+}
+.QnAtr {
+   width: 100px;
+}
+.board_text {
+   width:1080px; 
+   height:500px;
+   margin-top : 13px;
+}
+.inputbutton {
+	margin-top:5px;
+	background-color: #475d9f;
+    border: 1px solid #323f6b;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 18px;
+}

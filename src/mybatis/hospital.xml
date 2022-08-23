@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="Hospital">
+	
+	<!-- 아이디 중복 확인 -->
+	<select id="checkId" parameterType="String" resultType="int">
+		select count(*) from justdo_user where user_id=#{id}
+	</select>
+	
+	<select id="getUser" parameterType="String" resultType="hospital.LogonDataBean">
+		select * from justdo_user where user_id=#{id}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="insertUser" parameterType="hospital.LogonDataBean">
+		insert into justdo_user values(#{user_id}, #{user_passwd}, #{user_name}, #{user_tel, jdbcType=VARCHAR}, #{user_gender}, #{user_dis, jdbcType=VARCHAR}, #{user_p_name, jdbcType=VARCHAR}, #{user_p_tel, jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 정보수정 -->
+	<update id="modifyUser" parameterType="hospital.LogonDataBean">
+		update justdo_user set user_passwd=#{user_passwd}, user_tel=#{user_tel, jdbcType=VARCHAR}, user_gender=#{user_gender, jdbcType=VARCHAR}, user_dis=#{user_dis, jdbcType=VARCHAR}, user_p_name=#{user_p_name, jdbcType=VARCHAR}, user_p_tel=#{user_p_tel, jdbcType=VARCHAR} where user_id=#{user_id}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+		delete from justdo_user where user_id=#{id}
+	</delete>
+	
+	<!-- 관리자 페이지 유저 표시 -->
+	<select id="userlist" resultType="hospital.LogonDataBean">
+		select * from justdo_user
+	</select>
+	
+	
+	<!-- 의사 로그인 -->
+	<select id="drId" parameterType="String" resultType="int">
+		select count(*) from justdo_doctor where dr_id=#{id}
+	</select>
+	
+	<select id="getDoctor" parameterType="String" resultType="hospital.DoctorDataBean">
+		select * from justdo_doctor where dr_id=#{id}
+	</select>
+	
+	<!-- 관리자 페이지 의사 표시  -->
+	<select id="doctorlist" resultType="hospital.DoctorDataBean">
+		select * from justdo_doctor
+	</select>
+	
+	<!-- 게시판 -->
+	<select id="getCount" resultType="int">
+			select count(*) from justdo_board
+	</select>
+		
+		<!-- QnA 전체보기 -->
+		<select id="getArticles" parameterType="java.util.Map" resultType="hospital.BoardDataBean">
+			select b_no, b_title, b_write, b_reg_date, readcount , ref, re_step, re_level, fk_user_id1, fk_dr_id1  , r
+         		from (select b_no, b_title, b_write, b_reg_date, readcount, ref, re_step, re_level, fk_user_id1, fk_dr_id1 ,rownum r
+            		from (select b_no, b_title, b_write, b_reg_date, readcount, ref, re_step, re_level, fk_user_id1, fk_dr_id1 
+               			from justdo_board order by ref desc, re_step asc) order by ref desc, re_step asc )
+        	 where r &gt;= #{start} and r &lt;= #{end}
+		</select>
+		
+		<select id="maxNum" resultType="int">
+			select max(b_no) from justdo_board
+		</select>
+		
+		<!-- 답글 작성 -->
+		<update id="updateReply">
+			update justdo_board set re_step=re_step+1 where ref=#{ref} and re_step &gt; #{re_step}
+		</update>
+		
+		<!-- 글등록 -->
+		<insert id="insertArticle" parameterType="hospital.BoardDataBean">
+			insert into justdo_board(b_no, fk_user_id1, fk_dr_id1, b_title, b_write, b_reg_date, ref, re_step, re_level)
+			values( justdo_board_seq.NEXTVAL, #{fk_user_id1, jdbcType=VARCHAR}, #{fk_dr_id1, jdbcType=VARCHAR}, #{b_title}, #{b_write}, #{b_reg_date}, #{ref}, #{re_step}, #{re_level})
+		</insert>
+		
+		<select id="getArticle" parameterType="int" resultType="hospital.BoardDataBean">
+			select * from justdo_board where b_no=#{num}
+		</select>
+		
+		<!-- 조회수 -->
+		<update id="addCount" parameterType="int">
+			update justdo_board set readcount = readcount+1 where b_no=#{num}
+		</update>
+		
+		<!-- 글 수정 -->
+		<update id="modifyArticle" parameterType="hospital.BoardDataBean">
+			update justdo_board set b_title=#{b_title}, b_write=#{b_write} where b_no=#{b_no}
+		</update>
+		
+		<select id="checkReply" parameterType="hospital.BoardDataBean" resultType="int">
+			select count(*) from justdo_board where ref=#{ref} and re_step=#{re_step}+1 and re_level &gt; #{re_level}
+		</select>
+		
+		<update id="delArticle" parameterType="int">
+			update justdo_board set b_title='삭제된 글 입니다.', readcount=-1 where b_no=#{b_no}
+		</update>
+		
+		<!-- 답글 삭제 -->
+		<update id="deleteReply" parameterType="hospital.BoardDataBean">
+			update justdo_board set re_step=re_step-1 where ref=#{ref} and re_step &gt; #{re_level}
+		</update>
+		
+		<!-- 글 삭제 -->
+		<delete id="deleteArticle" parameterType="int">
+			delete from justdo_board where b_no=#{b_no}
+		</delete>
+		
+		
+		<!-- 공지사항 -->
+		<select id="getNcount" resultType="int">
+			select count(*) from justdo_notice
+		</select>
+		
+		<!-- 공지 전체 보기 -->
+		<select id="getNotices" parameterType="java.util.Map" resultType="hospital.NoticeDataBean">
+			select not_no, not_title, not_write, not_reg_date, readcount, ref, re_step, re_level, fk_dr_id2,  r
+				from (select not_no, not_title, not_write, not_reg_date, readcount, ref, re_step, re_level, fk_dr_id2, rownum r
+					from(select not_no, not_title, not_write, not_reg_date, readcount, ref, re_step, re_level, fk_dr_id2
+						from justdo_notice order by ref desc, re_step asc)
+							order by ref desc, re_step asc ) where r &gt;= #{start} and r &lt;= #{end}
+		</select>
+		
+		<select id="getNotice" parameterType="int" resultType="hospital.NoticeDataBean">
+			select * from justdo_notice where not_no=#{not_no}
+		</select>
+		
+		<!-- 조회수 -->
+		<update id="addNcount" parameterType="int">
+			update justdo_notice set readcount = readcount+1 where not_no=#{not_no}
+		</update>
+		
+		<!-- 공지 등록 -->
+		<insert id="insertNotice" parameterType="hospital.NoticeDataBean">
+			insert into justdo_notice( not_no, not_title, not_write, not_reg_date, ref, re_step, re_level, fk_dr_id2)
+				values( justdo_notice_seq.NEXTVAL, #{not_title}, #{not_write}, #{not_reg_date}, #{ref}, #{re_step}, #{re_level}, #{fk_dr_id2})
+		</insert>
+		
+		<select id="maxNot_no" resultType="int">
+			select max(not_no) from justdo_notice
+		</select>
+		
+		<!-- 글 삭제 -->
+		<delete id="deleteNotice" parameterType="int">
+			delete from justdo_notice where not_no=#{not_no}
+		</delete>
+		
+		
+
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="Reserv">
+	
+		<!-- 예약 삽입 -->
+		<insert id="insertReserv" parameterType="reserv.ReservDto">
+			insert into justdo_reserv(re_num, re_date, re_time, re_reg_date, re_col, user_id, dr_id)
+			values(justdo_reserv_seq.NEXTVAL, #{re_date}, #{re_time}, #{re_reg_date}, #{re_col, jdbcType=VARCHAR}, #{user_id}, #{dr_id})
+		</insert>
+		
+		<!-- 의사 예약 전체 예약 확인 -->
+		<select id="select" resultType="reserv.ReservDto">
+			select
+	   			a.re_num,
+	    		a.re_date,
+	   			a.re_time,
+			    a.re_reg_date,
+			    a.re_col,
+			    b.user_id,
+			    b.user_name,
+			    c.dr_id,
+			    c.dr_major,
+			    c.dr_name
+				from justdo_reserv a
+					inner join justdo_user b
+					on(a.user_id = b.user_id)
+					inner join justdo_doctor c
+					on(a.dr_id = c.dr_id)
+				where a.dr_id = 'doctor'
+				order by a.re_date ASC, a.re_time ASC
+		</select>
+		
+		<!-- 의사 예약 전체 예약 보기 -->
+		<select id="select2" resultType="reserv.ReservDto">
+			select
+	   			a.re_num,
+	    		a.re_date,
+	   			a.re_time,
+			    a.re_reg_date,
+			    a.re_col,
+			    b.user_id,
+			    b.user_name,
+			    c.dr_id,
+			    c.dr_major,
+			    c.dr_name
+				from justdo_reserv a
+					inner join justdo_user b
+					on(a.user_id = b.user_id)
+					inner join justdo_doctor c
+					on(a.dr_id = c.dr_id)
+				where a.dr_id = 'doctor1'
+				order by a.re_date ASC, a.re_time ASC
+		</select>
+		
+		<!-- 내과 전체 예약 확인 -->
+		<select id="select3" resultType="reserv.ReservDto">
+			select
+	   			a.re_num,
+	    		a.re_date,
+	   			a.re_time,
+			    b.user_id,
+			    b.user_name,
+			    c.dr_id,
+			    c.dr_major,
+			    c.dr_name
+				from justdo_reserv a
+					inner join justdo_user b
+					on(a.user_id = b.user_id)
+					inner join justdo_doctor c
+					on(a.dr_id = c.dr_id)
+				where a.dr_id = 'doctor'
+				order by a.re_date ASC, a.re_time ASC
+		</select>
+		
+		<!-- 이비인 후과 전체 예약 보기 -->
+		<select id="select4" resultType="reserv.ReservDto">
+			select
+	   			a.re_num,
+	    		a.re_date,
+	   			a.re_time,
+			    b.user_id,
+			    b.user_name,
+			    c.dr_id,
+			    c.dr_major,
+			    c.dr_name
+				from justdo_reserv a
+					inner join justdo_user b
+					on(a.user_id = b.user_id)
+					inner join justdo_doctor c
+					on(a.dr_id = c.dr_id)
+				where a.dr_id = 'doctor1'
+				order by a.re_date ASC, a.re_time ASC
+		</select>
+		
+		<select id="getReserv" parameterType="String" resultType="reserv.ReservDto">
+	   			select
+	   			a.re_num,
+	    		a.re_date,
+	   			a.re_time,
+			    b.user_id,
+			    b.user_name,
+			    c.dr_id,
+			    c.dr_major,
+			    c.dr_name,
+			    a.re_col
+				from justdo_reserv a
+					inner join justdo_user b
+					on(a.user_id = b.user_id)
+					inner join justdo_doctor c
+					on(a.dr_id = c.dr_id)
+				where a.user_id=#{id}
+		</select>
+		
+		<delete id="deleteReserv" parameterType="String">
+			delete from justdo_reserv where user_id=#{id}
+		</delete>
+		
+		<update id="modifyresev" parameterType="reserv.ReservDto">
+			update justdo_reserv set re_date=#{re_date}, re_time=#{re_time}, re_col=#{re_col, jdbcType=VARCHAR} where user_id=#{user_id}
+		</update>
+		
+		<select id="reservcheck" parameterType="String" resultType="int">
+			select count(*) from justdo_reserv where user_id=#{id}
+		</select>
+	</mapper>

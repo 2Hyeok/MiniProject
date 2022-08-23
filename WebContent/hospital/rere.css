@@ -1,0 +1,333 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.body {
+    position: static;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.table_2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+.rebox {
+    border: solid 1px black;
+}
+.rebox2 {
+    border: solid 1px black;
+    float: left;
+    position: relative;
+    width: 400px;
+    height: 700px;
+    background:  url(../img/narara.jpg);
+    background-size: contain;
+}
+.rebox4 {
+    list-style: none;
+
+}
+.rebox4 li {
+    margin-top: 90px;
+    text-align: center;
+    padding: 14px;
+}
+.rebox4 li a {
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 800;
+    font-family: 'Noto Sans Korean', 'Nanum Gothic',
+     sans-serif;
+    color: white;
+
+}
+
+.goupbtn {
+    top: 93%;
+    left: 97%;
+    width: 50px;
+    height: 50px;
+    border-radius: 80%;
+    border: none;
+    position: fixed;
+    z-index: 2;
+    background-color: aqua;
+}
+
+table {
+   margin-left:auto;
+   margin-right:auto;
+}
+ul, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+h4 {
+    margin: 10px auto;
+}
+.step_stepfont {
+
+}
+#li_d {
+    border-left: 1px solid white;
+}
+.yeyacform {
+    width: auto;
+    height: 900px;
+    margin-left: 100px;
+
+}
+
+.user_yeyac {
+    padding-bottom: 100px;
+    display: flex;
+}
+.user_yeyac_li {
+    width: 500px;
+    margin: 0;
+}
+.yeyac_step0 {
+    text-align: center;
+    width: 240px;
+    padding: 30px;
+    background-color: beige;
+    
+}
+.yeyac_step1 {
+    text-align: center;
+    width: 500px;
+    padding: 30px;
+    background-color: beige;
+    
+}
+.yeyac_step2 {
+    text-align: center;
+    width: 500px;
+    padding: 30px;
+    background-color: beige;
+}
+.yeyac_step3 {
+    text-align: center;
+    width: 495px;
+    padding: 30px;
+    background-color: beige;
+}
+strong {
+    font-size: 20px;
+}
+#step0_user_yeyac_li {
+    width: 220px;
+    height: auto;
+    margin: 0;
+}
+.step0_intro {
+    width: 220px;
+    text-align: center;
+    margin-top: 350px;
+}
+
+.step1_intro {
+    width: 500px;
+    height: 800px;
+    text-align: center;
+}
+.step1_intro_son {
+
+}
+.doctor_article {
+    width: 500px;
+    height: 300px;
+}
+.doctor_section {
+	padding-top: 50px;
+}
+.doctor_section a{
+    margin-top: 50px;
+    display: flex;
+}
+.doctor_section:hover {
+   padding: 16px;
+    border: 3px solid #1659ca;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
+}
+.doctor_img {
+
+}
+.doctor_img_size {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+.dateform {
+    text-align: center;
+}
+.step4_form {
+    height: 1000px;
+}
+.time_size {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 20px;
+    margin-bottom: 80px;
+}
+.time_ul li{
+    margin-bottom: 50px;
+}
+.zinro_sau {
+    margin-left: 100px;
+}
+.textarea_mom {
+    text-align: center;
+}
+#textarea {
+    width: 300px;
+    height: 130px;
+}
+.button_mom {
+    text-align: center;
+    margin-top: 20px;
+}
+.button_mom2 {
+
+}
+.button_on {
+    display: inline-block;
+    background-color: #4780c5;
+    font-size: 20px;
+    border-radius: 4px;
+    margin-left: 40px;
+    width: 220px;
+    height: 120px;
+    line-height: 120px;
+}
+.button_on2 {
+    display: inline-block;
+    background-color: #0088fe;
+    font-size: 20px;
+    border-radius: 4px;
+    width: 445px;
+    height: 50px;
+    line-height: 40px;
+    margin-left: 40px;
+}
+.button_on:visited {
+    color: white;
+}
+.button_on2:visited {
+    color: white;
+}
+.button_reset {
+    display: inline-block;
+    background-color: #7a899c;
+    font-size: 20px;
+    border-radius: 4px;
+    width: 220px;
+    height: 120px;
+    line-height: 120px;
+}
+.button_reset:visited {
+    color: white;
+}
+div {
+  margin-bottom: 10px;
+  position: relative;
+}
+.dateselect {
+   align-items: center;
+   margin-top: 200px;
+   text-align: center;
+}
+input[type="date"] {
+   width: auto;
+   padding: 20px 30px;
+   border: 1px solid #ddd;
+   background-color : skyblue;
+   font-size:26px;
+   
+}
+.dateselect_point {
+	margin-left: 163px;
+	color : red;
+	font-size : 25px;
+}
+/* text,month,day,year 별로 수정할때 사용
+input[type=date]::-webkit-datetime-edit-text { 
+  -webkit-appearance: none; 
+} 
+input[type=date]::-webkit-datetime-edit-month-field{ 
+  -webkit-appearance: none; 
+  background-color : ;
+  
+} 
+
+input[type=date]::-webkit-datetime-edit-day-field {
+  -webkit-appearance: none; 
+  background-color : ;
+} 
+
+input[type=date]::-webkit-datetime-edit-year-field { 
+  -webkit-appearance: none; 
+  background-color : ;
+}
+*/
+
+input[type="time"]{
+  position: relative;
+  min-height:30px;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  background-color : skyblue;
+  font-size:25px;
+}
+input[type="number"] {
+  width: 150px;
+}
+input + span {
+  padding-right: 10px;
+}
+
+
+input:invalid+span:after {
+  position: absolute;
+  content: '✖';
+  padding-left: 10px;
+  color: red;
+}
+
+input:valid+span:after {
+  position: absolute;
+  content: '✓';
+  color: blue;
+  width : 30px;
+  padding-left: 10px;
+}
+.appt-time {
+   margin-top : 15px;
+}
+.appt-check p{
+   font-size:13px;
+}
+
+ input[type=radio]{
+            background-color: #FFFF;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            margin-left: 10px;
+            border: 1px solid rgb(216, 216, 216);
+            width: 36px;
+            height: 36px;
+            border-radius: 100%;
+        }
+input[type=radio]:checked{
+   background: url(../img/bg_chk02.png) no-repeat 0 0;
+  -webkit-appearance: none;
+   -moz-appearance: none;
+            margin-left: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 100%;
+        }
